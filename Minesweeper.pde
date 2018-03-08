@@ -86,7 +86,8 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if(keyPressed = true)
+            
     }
 
     public void draw () 
@@ -110,7 +111,11 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
+        if(r>0 && r<19)
+        {
+            if(c>0 && c<19)
+                return true;
+        }
         return false;
     }
     public int countBombs(int row, int col)
