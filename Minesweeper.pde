@@ -82,19 +82,33 @@ public class MSButton
         return clicked;
     }
     // called by manager
-    
+    public int countBombs(int row, int col)
+    {
+        int numBombs = 0;
+        if(isValid(r,c-1) || isValid(r,c+1) ||isValid(r-1,c) ||isValid(r+1,c) ||isValid(r-1,c-1) ||isValid(r+1,c-1) ||isValid(r+1,c+1)||isValid(r-1,c+1))
+            numBombs++;
+        return numBombs;
+    }
     public void mousePressed () 
     {
         clicked = true;
         if(keyPressed = true)
-            
+            marked=isMarked();
+            if(marked=false)
+                clicked=false;
+        else if(bombs.contains(this))
+            displayLosingMessage();
+        //else if()
+            //label=;
+        else
+            mousePressed();
     }
 
     public void draw () 
     {    
         if (marked)
             fill(0);
-         else if( clicked && bombs.contains(this) ) 
+        else if( clicked && bombs.contains(this) ) 
              fill(255,0,0);
         else if(clicked)
             fill( 200 );
@@ -111,17 +125,11 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        if(r>0 && r<19)
+        if(r>0 && r<=20)
         {
-            if(c>0 && c<19)
+            if(c>0 && c<=20)
                 return true;
         }
         return false;
-    }
-    public int countBombs(int row, int col)
-    {
-        int numBombs = 0;
-        //your code here
-        return numBombs;
     }
 }
